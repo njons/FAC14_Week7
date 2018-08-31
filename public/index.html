@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="Free Web tutorials">
-  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="John Doe">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="public/css/reset.css">
@@ -13,7 +12,21 @@
 </head>
 
 <body>
-  <h1>The content of the document......</h1>
+  <section>
+    <h1>log in.</h1>
+    <form>
+      <label for="username">username</label>
+      <input type="text" name="username" id="username"></input>
+      <label for="password">password</label>
+      <input type="text" name="password" id="password"></input>
+      <button type="submit" id="submit">sign in</button>
+    </form>
+  </section>
+
+  <footer>
+    <h2>dont't have a login?</h2>
+    <button type="submit" id="submit">register here</button>
+  </footer>
 </body>
 
 <script src="public/js/dom.js"></script>

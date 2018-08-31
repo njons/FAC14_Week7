@@ -2,7 +2,7 @@
 node_modules/
 
 # Optional eslint settings
-eslintrc.json
+.eslintrc.json
 
 # dotenv environment variables file
 config.env
