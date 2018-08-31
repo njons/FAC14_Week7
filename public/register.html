@@ -8,24 +8,26 @@
   <link rel="stylesheet" type="text/css" href="public/css/reset.css">
   <link rel="stylesheet" type="text/css" href="public/css/style.css">
   <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
-  <title>login.</title>
+  <title>login. register.</title>
 </head>
 
 <body>
   <section>
-    <h1>log in.</h1>
+    <h1>register.</h1>
     <form>
       <label for="username">username</label>
       <input type="text" name="username" id="username"></input>
       <label for="password">password</label>
       <input type="text" name="password" id="password"></input>
+      <label for="html5colorpicker">pick a colour</label>
+      <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000">
       <button type="submit" id="submit">sign in</button>
     </form>
   </section>
 
   <footer>
-    <h2>dont't have a login?</h2>
-    <button type="submit" id="register">register here</button>
+    <h2>wait. you do have a login?</h2>
+    <button type="submit" id="register">login here</button>
   </footer>
 </body>
 
