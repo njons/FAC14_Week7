@@ -1,11 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   background: #f1e2d0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
+footer,
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  height: 60vh;
+  justify-content: center;
+}
+
+footer {
+  height: 30vh;
+  justify-content: flex-end;
+}
+
+h1,
+input {
+  margin: auto;
+}
+
+h1,
+h2,
+label,
+button,
+input {
   font-family: "InputMonoMedium";
   color: #1b1b26;
-  border: solid 7px #f7df3e;
+}
+
+label,
+button {
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+input {
+  font-size: 3vw;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+button {
+  font-size: 1.5vw;
+  margin: 5% 0;
+  width: calc(40vw - 10px);
+  padding: 10px;
+  background-color: #f7df3e;
+}
+
+button,
+label {
+  margin: 2% 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
