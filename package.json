@@ -1,0 +1,41 @@
+{
+  "name": "FAC14_Week7",
+  "version": "1.0.0",
+  "description": "week 7: authentication &amp; cookies",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "NODE_ENV=test tape test/*.js | tap-spec",
+    "db": "node src/db/db_build.js",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njons/FAC14_Week7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njons/FAC14_Week7/issues"
+  },
+  "homepage": "https://github.com/njons/FAC14_Week7#readme",
+  "devDependencies": {
+    "ajv": "^6.5.3",
+    "ajv-keywords": "^3.2.0",
+    "bcryptjs": "^2.4.3",
+    "codecov": "^3.0.4",
+    "cookie": "^0.3.1",
+    "env2": "^2.2.2",
+    "eslint": "^5.4.0",
+    "eslint-config-node": "^3.0.0",
+    "eslint-config-prettier": "^3.0.1",
+    "jsonwebtoken": "^8.3.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^13.0.1",
+    "pg": "^7.4.3",
+    "supertest": "^3.1.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
