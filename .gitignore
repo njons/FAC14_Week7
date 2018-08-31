@@ -1,1 +1,14 @@
-node_modules
+# Dependency directories
+node_modules/
+
+# Optional eslint settings
+eslintrc.json
+
+# dotenv environment variables file
+config.env
+
+# nyc test coverage
+.nyc_output
+
+# DS_Store
+.DS_Store
