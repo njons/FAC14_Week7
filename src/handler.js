@@ -43,4 +43,10 @@ const registerRoute = (request, response, url) => {};
 
 const logoutRoute = (request, response, url) => {};
 
-module.exports = { homeRoute, publicRoute loginRoute, registerRoute, logoutRoute};
+module.exports = {
+  homeRoute,
+  publicRoute,
+  loginRoute,
+  registerRoute,
+  logoutRoute
+};
