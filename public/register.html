@@ -14,20 +14,20 @@
 <body>
   <section>
     <h1>register.</h1>
-    <form>
+    <form action="/register" method="post">
       <label for="username">username</label>
-      <input type="text" name="username" id="username"></input>
+      <input type="text" name="username" id="username" value="njons"></input>
       <label for="password">password</label>
-      <input type="text" name="password" id="password"></input>
+      <input type="text" name="password" id="password" value="apple"></input>
       <label for="html5colorpicker">pick a colour</label>
-      <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000">
-      <button type="submit" id="submit">sign in</button>
+      <input type="color" id="color" name="color" value="#ff0000">
+      <button type="submit" id="submit">Join the fun!</button>
     </form>
   </section>
 
   <footer>
     <h2>wait. you do have a login?</h2>
-    <button type="submit" id="register">login here</button>
+    <button id="register">login here</button>
   </footer>
 </body>
 
