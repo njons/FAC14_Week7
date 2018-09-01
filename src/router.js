@@ -4,6 +4,7 @@ const {
   publicRoute,
   loginRoute,
   registerRoute,
+  welcomeRoute,
   logoutRoute
 } = require("./handler");
 
@@ -20,6 +21,8 @@ const router = (request, response) => {
     loginRoute(request, response, url);
   } else if (url.includes("/register")) {
     registerRoute(request, response, url);
+  } else if (url.includes("/welcome")) {
+    welcomeRoute(request, response, url);
   } else if (url.includes("/logout")) {
     logoutRoute(request, response, url);
   } else {

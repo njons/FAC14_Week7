@@ -14,14 +14,14 @@ const register = (username, password, colour, cb) => {
       (err, dbResults) => {
         // console.log("this is dbResults", dbResults);
         // console.log(cb());
-        if (err) return cb(err);
+        // if (err) return cb(err);
         // ask the database for the id of the curent user so it can be adedd to the cookie
         dbConnection.query(
-          `SELECT username FROM users WHERE username=$1;`,
+          `SELECT id FROM users WHERE username=$1;`,
           [username],
-          (err, username) => {
-            // console.log("this is userId", userId.rows[0].id);
-            cb(null, username);
+          (err, userId) => {
+            console.log("(register) this is userId", userId);
+            cb(null, userId);
           }
         );
       }
