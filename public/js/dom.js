@@ -1,9 +1,9 @@
 (function() {
-  document.addEventListener("load", event => {
-    const body = document.querySelector("body");
-    console.log("iloaded!");
-    getWelcomeData("/user-data");
-  });
+  // document.addEventListener("load", event => {
+  const body = document.querySelector("body");
+  console.log("iloaded!");
+  getWelcomeData("/user-data");
+  // });
 
   function xhrRequest(method, url, cb) {
     const xhr = new XMLHttpRequest();
