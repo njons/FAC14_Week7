@@ -4,9 +4,10 @@ const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 
-const verifyLogin = require("./queries/login");
+const verifyLogin = require("./queries/verifyLogin");
 const register = require("./queries/register");
 const getUserInfo = require("./queries/getUserInfo");
+const getUserId = require("./queries/getUserId");
 
 const key = "jaffa";
 
@@ -20,6 +21,16 @@ const readFile = (response, filename) => {
       response.end(file);
     }
   });
+};
+
+const makeCookie = (loggedIn, userId) => {
+  console.log("this is the Id in the cookie:", userId);
+  const payload = {
+    logged_in: loggedIn,
+    user_id: userId
+  };
+  const options = { expiresIn: "30d" };
+  return jwt.sign(payload, key, options);
 };
 
 const homeRoute = (request, response) => {
@@ -47,12 +58,20 @@ const publicRoute = (request, response, url) => {
   });
 };
 
+const registerRoute = (request, response, url) => {
+  readFile(response, "register.html");
+};
+
 const loginRoute = (request, response, url) => {
   readFile(response, "index.html");
 };
 
+const welcomeRoute = (request, response, url) => {
+  readFile(response, "welcome.html");
+};
+
 const verifyLoginRoute = (request, response, url) => {
-  // console.log("this is url", url);
+  console.log("this is url", url);
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -60,7 +79,6 @@ const verifyLoginRoute = (request, response, url) => {
   request.on("end", () => {
     const username = querystring.parse(data).username;
     const password = querystring.parse(data).password;
-
     if (data) {
       verifyLogin(username, password, (err, data) => {
         if (err) {
@@ -68,30 +86,27 @@ const verifyLoginRoute = (request, response, url) => {
           response.end("<h1>error updating the database</h1>");
         } else if (data) {
           console.log("(handler) bang:", data);
-          const payload = {
-            logged_in: data
-          };
-          const options = { expiresIn: "30d" };
-          const token = jwt.sign(payload, key, options);
-          response.writeHead(302, {
-            location: "/welcome",
-            "Set-Cookie": `status=${token}; HttpOnly`
+          getUserId(username, (err, userId) => {
+            if (err) console.log(err);
+            if (data) {
+              const token = makeCookie(data, userId);
+              response.writeHead(302, {
+                location: "/welcome",
+                "Set-Cookie": `status=${token}; HttpOnly`
+              });
+              response.end();
+            } else {
+              response.writeHead(302, {
+                location: "/",
+                "Set-Cookie": "status=0; Max-Age=0"
+              });
+              response.end();
+            }
           });
-          response.end();
-        } else {
-          response.writeHead(302, {
-            location: "/",
-            "Set-Cookie": "status=0; Max-Age=0"
-          });
-          response.end();
         }
       });
     }
   });
-};
-
-const registerRoute = (request, response, url) => {
-  readFile(response, "register.html");
 };
 
 const saveRegistryRoute = (request, response, url) => {
@@ -111,27 +126,23 @@ const saveRegistryRoute = (request, response, url) => {
           response.writeHead(500, { "content-type": "html/text" });
           response.end("<h1>Woops womething went wrong</h1>");
         } else if (userId) {
-          console.log("(handler) bong:", userId.rows[0].id);
-          const payload = {
-            logged_in: true,
-            id: userId.rows[0].id
-          };
-          const options = { expiresIn: "30d" };
-          const token = jwt.sign(payload, key, options);
-          console.log("(register) this is token:", token);
+          console.log("(handler) this is userid from register:", userId);
+          const token = makeCookie(true, userId.rows[0].id);
           response.writeHead(302, {
             location: "/welcome",
             "Set-Cookie": `status=${token}; HttpOnly`
+          });
+          response.end();
+        } else {
+          response.writeHead(302, {
+            location: "/",
+            "Set-Cookie": "status=0; Max-Age=0"
           });
           response.end();
         }
       });
     }
   });
-};
-
-const welcomeRoute = (request, response, url) => {
-  readFile(response, "welcome.html");
 };
 
 const welcomeDataRoute = (request, response, url) => {
@@ -145,16 +156,16 @@ const welcomeDataRoute = (request, response, url) => {
     // use the module jsonwebtoken to verify the infomatin in the cookie
     jwt.verify(cookies.status, key, (err, decoded) => {
       console.log("(handler) this is decoded:", decoded);
-      console.log("(handler) this is decoded.id is true:", decoded.id);
-      getUserInfo(decoded.id, (err, userInfo) => {
+      console.log("(handler) this is decoded.id:", decoded.user_id);
+      getUserInfo(decoded.user_id, (err, userInfo) => {
         if (err) console.log(err);
         // console.log("hi ", userInfo.rows[0].username);
         // console.log("you like ", userInfo.rows[0].colour);
         const returnObj = {
-          // username: userInfo.rows[0].username,
-          // colour: userInfo.rows[0].colour,
-          // user_id: decoded.id,
-          // logged_in: decoded.logged_in
+          username: userInfo.rows[0].username,
+          colour: userInfo.rows[0].colour,
+          user_id: decoded.user_id,
+          logged_in: decoded.logged_in
         };
         console.log("returnObj:", returnObj);
         response.writeHead(200, { "content-type": "application/json" });
@@ -163,14 +174,20 @@ const welcomeDataRoute = (request, response, url) => {
     });
   } else {
     response.writeHead(302, {
-      location: "/",
-      "Set-Cookie": "status=0; Max-Age=0"
+      Location: "/",
+      "Set-Cookie": "logged_in=0; Max-Age=0"
     });
     response.end();
   }
 };
 
-const logoutRoute = (request, response, url) => {};
+const logoutRoute = (request, response, url) => {
+  response.writeHead(302, {
+    location: "/",
+    "Set-Cookie": "status=0; Max-Age=0"
+  });
+  response.end();
+};
 
 module.exports = {
   homeRoute,
