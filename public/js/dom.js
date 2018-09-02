@@ -1,12 +1,5 @@
-const body = document.querySelector("body");
-const register = document.querySelector("#submit-register");
-const signIn = document.querySelector("#submit-login");
-
-const usernameInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const colourInput = document.querySelector("#colour");
-
 window.addEventListener("load", event => {
+  const body = document.querySelector("body");
   console.log("iloaded!");
   getWelcomeData("/user-data");
 });
@@ -30,11 +23,11 @@ function getWelcomeData() {
   xhrRequest("GET", url, (err, data) => {
     if (err) new Error();
     if (!data.logged_in) {
-      console.log("NOT logged in!");
+      // console.log("NOT logged in!");
       body.style.backgroundColor = "#f1e2d0";
     } else {
-      console.log("logged in!");
-      console.log("this is data in the front:", data.colour);
+      // console.log("logged in!");
+      // console.log("this is data in the front:", data.colour);
       body.style.backgroundColor = data.colour;
       const name = document.querySelector("#name");
       name.innerText = data.username;
