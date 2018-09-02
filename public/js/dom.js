@@ -1,4 +1,6 @@
-document.addEventListener("load", event => {
+console.log("this is dom.js");
+
+document.addEventListener("DOMContentLoaded", event => {
   const body = document.querySelector("body");
   console.log("iloaded!");
   getWelcomeData("/user-data");
