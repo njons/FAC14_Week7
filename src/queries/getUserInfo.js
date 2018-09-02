@@ -7,6 +7,8 @@ const getUserInfo = (id, cb) => {
     `SELECT username, colour FROM users WHERE id=$1`,
     [id],
     (err, dbResults) => {
+      if (err) return cb(err);
+      cb(null, dbResults);
       console.log("(getUserInfo) this is db Results:", dbResults);
     }
   );

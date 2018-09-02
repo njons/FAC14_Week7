@@ -10,19 +10,20 @@ const getUserInfo = require("./queries/getUserInfo");
 
 const key = "jaffa";
 
-const homeRoute = (request, response) => {
-  fs.readFile(
-    path.join(__dirname, "..", "public", "index.html"),
-    (err, file) => {
-      if (err) {
-        response.writeHead(500, { "Content-type": "text/html" });
-        response.end("<h1>Woops womething webt wrong</h1>");
-      } else {
-        response.writeHead(200, { "Content-type": "text/html" });
-        response.end(file);
-      }
+const readFile = (response, filename) => {
+  fs.readFile(path.join(__dirname, "..", "public", filename), (err, file) => {
+    if (err) {
+      response.writeHead(500, { "Content-type": "text/html" });
+      response.end("<h1>Woops womething webt wrong</h1>");
+    } else {
+      response.writeHead(200, { "Content-type": "text/html" });
+      response.end(file);
     }
-  );
+  });
+};
+
+const homeRoute = (request, response) => {
+  readFile(response, "index.html");
 };
 
 const publicRoute = (request, response, url) => {
@@ -64,8 +65,7 @@ const loginRoute = (request, response, url) => {
         } else if (data) {
           console.log("(handler) bang:", data);
           const payload = {
-            logged_in: true,
-            id: data
+            logged_in: data
           };
           const options = { expiresIn: "30d" };
           const token = jwt.sign(payload, key, options);
@@ -87,19 +87,10 @@ const loginRoute = (request, response, url) => {
 };
 
 const registerRoute = (request, response, url) => {
-  fs.readFile(
-    path.join(__dirname, "..", "public", "register.html"),
-    (err, file) => {
-      if (err) {
-        response.writeHead(500, { "Content-type": "text/html" });
-        response.end("<h1>Woops womething webt wrong</h1>");
-      } else {
-        response.writeHead(200, { "Content-type": "text/html" });
-        response.end(file);
-      }
-    }
-  );
-  console.log("this is url", url);
+  readFile(response, "register.html");
+};
+
+const saveRegistryRoute = (request, response, url) => {
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -115,15 +106,15 @@ const registerRoute = (request, response, url) => {
         if (err) {
           response.writeHead(500, { "content-type": "html/text" });
           response.end("<h1>Woops womething went wrong</h1>");
-        } else {
-          console.log("(handler) bong:", userId);
+        } else if (userId) {
+          console.log("(handler) bong:", userId.rows[0].id);
           const payload = {
             logged_in: true,
-            id: userId
+            id: userId.rows[0].id
           };
           const options = { expiresIn: "30d" };
           const token = jwt.sign(payload, key, options);
-          console.log("this is token:", token);
+          console.log("(register) this is token:", token);
           response.writeHead(302, {
             location: "/welcome",
             "Set-Cookie": `status=${token}; HttpOnly`
@@ -136,6 +127,11 @@ const registerRoute = (request, response, url) => {
 };
 
 const welcomeRoute = (request, response, url) => {
+  readFile(response, "welcome.html");
+};
+
+const welcomeDataRoute = (request, response, url) => {
+  console.log(url);
   // check if there is a cookie
   console.log("(handler) this is the request:", request.headers.cookie);
   if (request.headers.cookie && request.headers.cookie.includes("status")) {
@@ -146,33 +142,28 @@ const welcomeRoute = (request, response, url) => {
     jwt.verify(cookies.status, key, (err, decoded) => {
       console.log("(handler) this is decoded:", decoded);
       console.log("(handler) this is decoded.id is true:", decoded.id);
-      getUserInfo(decoded.id, (err, decoded) => {
+      getUserInfo(decoded.id, (err, userInfo) => {
         if (err) console.log(err);
-        console.log("hi ", name);
+        // console.log("hi ", userInfo.rows[0].username);
+        // console.log("you like ", userInfo.rows[0].colour);
         const returnObj = {
-          username: name,
-          user_id: decoded.user_id,
-          logged_in: decoded.logged_in,
-          days: data
+          // username: userInfo.rows[0].username,
+          // colour: userInfo.rows[0].colour,
+          // user_id: decoded.id,
+          // logged_in: decoded.logged_in
         };
         console.log("returnObj:", returnObj);
-        // res.writeHead(200, { 'content-type': 'application/json' });
-        // return res.end(JSON.stringify(returnObj));
+        response.writeHead(200, { "content-type": "application/json" });
+        response.end(JSON.stringify(returnObj));
       });
     });
+  } else {
+    response.writeHead(302, {
+      location: "/",
+      "Set-Cookie": "status=0; Max-Age=0"
+    });
+    response.end();
   }
-  fs.readFile(
-    path.join(__dirname, "..", "public", "welcome.html"),
-    (err, file) => {
-      if (err) {
-        response.writeHead(500, { "Content-type": "text/html" });
-        response.end("<h1>Woops womething webt wrong</h1>");
-      } else {
-        response.writeHead(200, { "Content-type": "text/html" });
-        response.end(file);
-      }
-    }
-  );
 };
 
 const logoutRoute = (request, response, url) => {};
@@ -182,6 +173,8 @@ module.exports = {
   publicRoute,
   loginRoute,
   registerRoute,
+  saveRegistryRoute,
   welcomeRoute,
+  welcomeDataRoute,
   logoutRoute
 };

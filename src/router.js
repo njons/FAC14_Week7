@@ -4,7 +4,9 @@ const {
   publicRoute,
   loginRoute,
   registerRoute,
+  saveRegistryRoute,
   welcomeRoute,
+  welcomeDataRoute,
   logoutRoute
 } = require("./handler");
 
@@ -14,15 +16,19 @@ const router = (request, response) => {
   const url = request.url;
 
   if (url === "/") {
-    homeRoute(request, response);
+    homeRoute(request, response, url);
   } else if (url.includes("/public")) {
     publicRoute(request, response, url);
   } else if (url.includes("/login")) {
     loginRoute(request, response, url);
   } else if (url.includes("/register")) {
     registerRoute(request, response, url);
+  } else if (url.includes("/save-registry")) {
+    saveRegistryRoute(request, response, url);
   } else if (url.includes("/welcome")) {
     welcomeRoute(request, response, url);
+  } else if (url.includes("/user-data")) {
+    welcomeDataRoute(request, response, url);
   } else if (url.includes("/logout")) {
     logoutRoute(request, response, url);
   } else {

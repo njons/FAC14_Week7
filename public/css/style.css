@@ -64,6 +64,7 @@ button {
   width: calc(40vw - 10px);
   padding: 10px;
   background-color: #f7df3e;
+  cursor: pointer;
 }
 
 button,
