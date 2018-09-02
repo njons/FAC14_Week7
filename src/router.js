@@ -3,6 +3,7 @@ const {
   homeRoute,
   publicRoute,
   loginRoute,
+  verifyLoginRoute,
   registerRoute,
   saveRegistryRoute,
   welcomeRoute,
@@ -21,6 +22,8 @@ const router = (request, response) => {
     publicRoute(request, response, url);
   } else if (url.includes("/login")) {
     loginRoute(request, response, url);
+  } else if (url.includes("/verify-login")) {
+    verifyLoginRoute(request, response, url);
   } else if (url.includes("/register")) {
     registerRoute(request, response, url);
   } else if (url.includes("/save-registry")) {

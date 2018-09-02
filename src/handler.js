@@ -48,6 +48,10 @@ const publicRoute = (request, response, url) => {
 };
 
 const loginRoute = (request, response, url) => {
+  readFile(response, "index.html");
+};
+
+const verifyLoginRoute = (request, response, url) => {
   // console.log("this is url", url);
   let data = "";
   request.on("data", chunk => {
@@ -172,6 +176,7 @@ module.exports = {
   homeRoute,
   publicRoute,
   loginRoute,
+  verifyLoginRoute,
   registerRoute,
   saveRegistryRoute,
   welcomeRoute,
