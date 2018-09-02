@@ -5,7 +5,7 @@ const verifyLogin = (username, password, cb) => {
   console.log("this is username:", username);
   // ask db for the hashed password that belongs to the unique username (to match with the input)
   dbConnection.query(
-    `SELECT password FROM users WHERE username = $1;`,
+    `SELECT password, id FROM users WHERE username = $1;`,
     [username],
     (err, dbResult) => {
       console.log(

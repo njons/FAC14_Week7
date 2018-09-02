@@ -3,6 +3,7 @@ const {
   homeRoute,
   publicRoute,
   loginRoute,
+  verifyLoginRoute,
   registerRoute,
   saveRegistryRoute,
   welcomeRoute,
@@ -16,20 +17,28 @@ const router = (request, response) => {
   const url = request.url;
 
   if (url === "/") {
+    // PAGE: this is where we are serving the login files
     homeRoute(request, response, url);
   } else if (url.includes("/public")) {
     publicRoute(request, response, url);
   } else if (url.includes("/login")) {
+    // PAGE: this is where we are serving the login files
     loginRoute(request, response, url);
+  } else if (url.includes("/verify-login")) {
+    verifyLoginRoute(request, response, url);
   } else if (url.includes("/register")) {
+    // PAGE: this is where we are serving the register files
     registerRoute(request, response, url);
   } else if (url.includes("/save-registry")) {
     saveRegistryRoute(request, response, url);
   } else if (url.includes("/welcome")) {
+    // PAGE: this is where we are serving the welcome files
     welcomeRoute(request, response, url);
   } else if (url.includes("/user-data")) {
+    // ACTION: on welcome (grab colour from the)
     welcomeDataRoute(request, response, url);
   } else if (url.includes("/logout")) {
+    // ACTION: on logout (reroute to login and destroy cookie)
     logoutRoute(request, response, url);
   } else {
     response.writeHead(404, "Content-Type: text/html");
