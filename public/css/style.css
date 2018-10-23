@@ -5,16 +5,17 @@
 body {
   -webkit-font-smoothing: antialiased;
   background: #f1e2d0;
+  padding: 0 20px;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 footer,
 section {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 section {
@@ -43,25 +44,29 @@ input {
 
 label,
 button {
+  font-size: 22px;
   text-transform: uppercase;
 }
 
 h1,
-h2,
 input {
-  font-size: 3vw;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 22px;
 }
 
 input,
 button {
   border: none;
   outline: none;
+  width: 100%;
 }
 
 button {
-  font-size: 1.5vw;
   margin: 5% 0;
-  width: calc(40vw - 10px);
+  /* width: calc(40vw - 10px); */
   padding: 10px;
   background-color: #f7df3e;
   cursor: pointer;
@@ -69,11 +74,12 @@ button {
 
 button,
 label {
-  margin: 2% 0;
+  margin: 10px 0;
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
