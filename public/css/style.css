@@ -17,6 +17,7 @@ body {
 
 footer,
 section {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -26,8 +27,9 @@ section {
 }
 
 footer {
-  height: 30vh;
+  margin-top: auto;
   justify-content: flex-end;
+  margin-bottom: 30px;
 }
 
 h1 {
