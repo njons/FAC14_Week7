@@ -2,7 +2,7 @@ const dbConnection = require("../db/db_connection");
 const bcryptjs = require("bcryptjs");
 
 const verifyLogin = (username, password, cb) => {
-  console.log("this is username:", username);
+  console.log("this is username in db:", username);
   // ask db for the hashed password that belongs to the unique username (to match with the input)
   dbConnection.query(
     `SELECT password, id FROM users WHERE username = $1;`,

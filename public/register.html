@@ -14,11 +14,11 @@
     <h1>register.</h1>
     <form action="/save-registry" method="post">
       <label for="username">username</label>
-      <input type="text" name="username" id="username" value=""></input>
+      <input type="text" name="username" id="username" value=""  autocomplete="off" autofocus>
       <label for="password">password</label>
-      <input type="text" name="password" id="password" value=""></input>
+      <input type="text" name="password" id="password" value="" autocomplete="off">
       <label for="color">pick a colour</label>
-      <input type="color" id="color" name="color" value="#ff0000">
+      <input type="color" id="color" name="color" value="#ff0000" required>
       <button type="submit" id="submit-register">Join the fun!</button>
     </form>
   </section>
@@ -27,6 +27,6 @@
     <h2>wait.</br> you already have a login?</h2>
     <a href="/login"><button id="register">login here</button></a>
   </footer>
-  <!-- <script src="public/js/dom.js"></script> -->
+  <script src="public/js/dom_inputs.js"></script>
 </body>
 </html>

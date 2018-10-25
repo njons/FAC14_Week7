@@ -33,6 +33,15 @@ const makeCookie = (loggedIn, userId) => {
   return jwt.sign(payload, key, options);
 };
 
+const validateName = name => {
+  const lowerCaseName = name.toLowerCase();
+  return lowerCaseName.replace(/\s/g, "");
+};
+
+const validatePwd = pwd => {
+  return pwd.trim();
+};
+
 const homeRoute = (request, response) => {
   readFile(response, "index.html");
 };
@@ -77,34 +86,42 @@ const verifyLoginRoute = (request, response, url) => {
     data += chunk;
   });
   request.on("end", () => {
-    const username = querystring.parse(data).username;
-    const password = querystring.parse(data).password;
-    if (data) {
-      verifyLogin(username, password, (err, data) => {
-        if (err) {
-          response.writeHead(500, { "content-type": "html/text" });
-          response.end("<h1>error updating the database</h1>");
-        } else if (data) {
-          console.log("(handler) bang:", data);
-          getUserId(username, (err, userId) => {
-            if (err) console.log(err);
-            if (data) {
-              const token = makeCookie(data, userId);
-              response.writeHead(302, {
-                location: "/welcome",
-                "Set-Cookie": `status=${token}; HttpOnly`
-              });
-              response.end();
-            } else {
-              response.writeHead(302, {
-                location: "/",
-                "Set-Cookie": "status=0; Max-Age=0"
-              });
-              response.end();
-            }
-          });
-        }
-      });
+    const username = validateName(querystring.parse(data).username);
+    console.log("this is username:", username);
+    const password = validatePwd(querystring.parse(data).password);
+    console.log("this is password:", password);
+    if (username.length === 0) {
+      return "username is empty";
+    } else if (password.length === 0) {
+      return "password is empty";
+    } else {
+      if (data) {
+        verifyLogin(username, password, (err, data) => {
+          if (err) {
+            response.writeHead(500, { "content-type": "html/text" });
+            response.end("<h1>error updating the database</h1>");
+          } else if (data) {
+            console.log("(handler) bang:", data);
+            getUserId(username, (err, userId) => {
+              if (err) console.log(err);
+              if (data) {
+                const token = makeCookie(data, userId);
+                response.writeHead(302, {
+                  location: "/welcome",
+                  "Set-Cookie": `status=${token}; HttpOnly`
+                });
+                response.end();
+              } else {
+                response.writeHead(302, {
+                  location: "/",
+                  "Set-Cookie": "status=0; Max-Age=0"
+                });
+                response.end();
+              }
+            });
+          }
+        });
+      }
     }
   });
 };
@@ -116,8 +133,8 @@ const saveRegistryRoute = (request, response, url) => {
   });
   request.on("end", () => {
     console.log("(handler) this is data back from register:", data);
-    const username = querystring.parse(data).username;
-    const password = querystring.parse(data).password;
+    const username = validateName(querystring.parse(data).username);
+    const password = validatePwd(querystring.parse(data).password);
     const colour = querystring.parse(data).color;
     if (data) {
       register(username, password, colour, (err, userId) => {
