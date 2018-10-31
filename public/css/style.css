@@ -10,9 +10,10 @@ body {
   background: #f1e2d0;
   padding: 0 20px;
   height: 100vh;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: auto;
 }
 
 footer,

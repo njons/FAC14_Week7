@@ -134,6 +134,7 @@ const saveRegistryRoute = (request, response, url) => {
   request.on("end", () => {
     console.log("(handler) this is data back from register:", data);
     const username = validateName(querystring.parse(data).username);
+    console.log(username);
     const password = validatePwd(querystring.parse(data).password);
     const colour = querystring.parse(data).color;
     if (data) {

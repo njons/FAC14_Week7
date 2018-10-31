@@ -5,11 +5,10 @@ var passwordInput = document.querySelector("#password");
 
 console.log(passwordInput);
 
-var loginButton = document.querySelector("#submit-login");
+var submit = document.querySelector("#submit");
+// var registerButton = document.querySelector("#submit");
 
-console.log(loginButton);
-
-loginButton.addEventListener("click", event => {
+submit.addEventListener("click", event => {
   // var username = usernameInput.value;
   var username = usernameInput.value.toLowerCase().replace(/\s/g, "");
   var password = passwordInput.value.replace(/\s/g, "");
@@ -23,7 +22,7 @@ loginButton.addEventListener("click", event => {
     element.addEventListener("focus", event => {
       element.style.backgroundColor = "white";
       element.placeholder = "";
-      element.value = "";
+      // element.value = "";
     });
   }
 
