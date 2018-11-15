@@ -23,13 +23,13 @@
   "devDependencies": {
     "ajv": "^6.5.3",
     "ajv-keywords": "^3.2.0",
-    "bcryptjs": "^2.4.3",
     "codecov": "^3.0.4",
     "cookie": "^0.3.1",
     "env2": "^2.2.2",
     "eslint": "^5.4.0",
     "eslint-config-node": "^3.0.0",
     "eslint-config-prettier": "^3.0.1",
+    "jest": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
     "nodemon": "^1.18.4",
     "nyc": "^13.0.1",
@@ -37,5 +37,8 @@
     "supertest": "^3.1.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
   }
 }

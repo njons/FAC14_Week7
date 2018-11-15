@@ -15,3 +15,9 @@ test(`error is null when db is filled`, t => {
     t.end();
   });
 });
+
+test(``, t => {
+  dbBuild((err, data) => {
+    t.
+  })
+})
