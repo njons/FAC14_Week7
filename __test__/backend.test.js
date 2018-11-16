@@ -30,7 +30,7 @@ describe("Tests password validation function", () => {
   test("validateName returns a string", () => {
     expect(typeof validatePwd("password")).toBe("string");
   });
-  test("validatePwd does not register space at the end", () => {
+  test("validatePwd does not register spaces at the beginning or end of input", () => {
     expect(validateName("password    ")).toBe("password");
     expect(validateName("password ")).toBe("password");
     expect(validateName(" password ")).toBe("password");

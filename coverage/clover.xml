@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1542392822671" clover="3.2.0">
-  <project timestamp="1542392822671" name="All files">
-    <metrics statements="212" coveredstatements="104" conditionals="70" coveredconditionals="24" methods="41" coveredmethods="15" elements="323" coveredelements="143" complexity="0" loc="212" ncloc="212" packages="5" files="9" classes="9">
+<coverage generated="1542399238535" clover="3.2.0">
+  <project timestamp="1542399238536" name="All files">
+    <metrics statements="211" coveredstatements="101" conditionals="70" coveredconditionals="23" methods="41" coveredmethods="13" elements="322" coveredelements="137" complexity="0" loc="211" ncloc="211" packages="5" files="9" classes="9">
       <package name="public.js">
-        <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="dom.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/public/js/dom.js">
-          <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <metrics statements="12" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
           <line num="3" count="1" type="stmt"/>
           <line num="5" count="1" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
           <line num="7" count="0" type="stmt"/>
           <line num="11" count="0" type="stmt"/>
-          <line num="12" count="0" type="stmt"/>
+          <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="16" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
           <line num="21" count="0" type="stmt"/>
-          <line num="22" count="0" type="stmt"/>
         </file>
       </package>
       <package name="src">
@@ -187,16 +186,16 @@
         </file>
       </package>
       <package name="src.db.test_db">
-        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <file name="test_db_build.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/src/db/test_db/test_db_build.js">
-          <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+          <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
           <line num="2" count="1" type="stmt"/>
           <line num="5" count="1" type="stmt"/>
           <line num="8" count="1" type="stmt"/>
-          <line num="9" count="1" type="stmt"/>
-          <line num="10" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="11" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="11" count="0" type="stmt"/>
           <line num="15" count="1" type="stmt"/>
         </file>
       </package>
@@ -215,14 +214,14 @@
         </file>
         <file name="getUserInfo.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/src/queries/getUserInfo.js">
           <metrics statements="8" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-          <line num="1" count="2" type="stmt"/>
-          <line num="3" count="2" type="stmt"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
           <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="11" count="0" type="stmt"/>
           <line num="12" count="0" type="stmt"/>
-          <line num="17" count="2" type="stmt"/>
+          <line num="17" count="3" type="stmt"/>
         </file>
         <file name="register.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/src/queries/register.js">
           <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>

@@ -65,7 +65,7 @@ function isUser() {
     });
   } else {
     // load a url (to the correct route) with the information needed for the SQL query
-    var url = "/get-data?name=" + name + "&birth=" + birth;
+    const url = "/get-data?name=" + name + "&birth=" + birth;
     // call the generic xhr request (set method, url and error handling when data comes back)
     xhrRequest("GET", url, function(err, data) {
       if (err) new Error();
@@ -83,19 +83,19 @@ function isUser() {
     });
   }
 }
-
-function postDataToDb() {
-  var name = valitatedName(nameInput.value);
-  var birth = birthdateInput.value;
-  // load a url (to the correct route) with the information needed for the SQL query
-  var url =
-    "/create-user?name=" + name + "&birth=" + birth + "&death=" + randomDate;
-  // call the generic xhr request (set method, url and error handling when data comes back)
-  xhrRequest("POST", url, function(err, data) {
-    if (err) new Error();
-    renderDate(data);
-  });
-}
+//
+// function postDataToDb() {
+//   var name = valitatedName(nameInput.value);
+//   var birth = birthdateInput.value;
+//   // load a url (to the correct route) with the information needed for the SQL query
+//   var url =
+//     "/create-user?name=" + name + "&birth=" + birth + "&death=" + randomDate;
+//   // call the generic xhr request (set method, url and error handling when data comes back)
+//   xhrRequest("POST", url, function(err, data) {
+//     if (err) new Error();
+//     renderDate(data);
+//   });
+// }
 
 function isUser() {
   const url = "/verify-login";
@@ -115,20 +115,20 @@ function isUser() {
 }
 
 // generic xhr request (allow to set different methods and urls)
-function xhrRequest(method, url, cb) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log("this is xhr", xhr.responseText);
-      console.log(xhr);
-      cb(null, JSON.parse(xhr.responseText));
-    } else if (xhr.readyState === 4 && xhr.status !== 200) {
-      cb("error" + xhr.responseType);
-    }
-  };
-  xhr.open(method, url, true);
-  xhr.send();
-}
+// function xhrRequest(method, url, cb) {
+//   var xhr = new XMLHttpRequest();
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4 && xhr.status === 200) {
+//       console.log("this is xhr", xhr.responseText);
+//       console.log(xhr);
+//       cb(null, JSON.parse(xhr.responseText));
+//     } else if (xhr.readyState === 4 && xhr.status !== 200) {
+//       cb("error" + xhr.responseType);
+//     }
+//   };
+//   xhr.open(method, url, true);
+//   xhr.send();
+// }
 
 //
 // function xhrRequest(method, url, cb) {
@@ -144,3 +144,5 @@ function xhrRequest(method, url, cb) {
 //   xhr.open(method, url, true);
 //   xhr.send();
 // }
+
+module.exports = { isUser, postDataToDb };

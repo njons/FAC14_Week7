@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", event => {
   getWelcomeData("/user-data");
 });
 
-function getWelcomeData() {
-  const url = "/user-data";
+function getWelcomeData(url) {
   xhrRequest("GET", url, (err, data) => {
     if (err) new Error();
     if (!data.logged_in) {
