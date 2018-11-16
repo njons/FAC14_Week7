@@ -61,7 +61,7 @@ const publicRoute = (request, response, url) => {
       response.writeHead(500, { "Content-type": "text/html" });
       response.end("<h1>Woops womething webt wrong</h1>");
     } else {
-      response.writeHead(200, `Content-type: ${ext[fileExt]}`);
+      response.writeHead(200, `Content-type: ${fileExt[ext]}`);
       response.end(file);
     }
   });

@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/handler.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> handler.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.14% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>45/118</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">41.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.79% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>45/116</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require("fs");
+const path = require("path");
+const querystring = require("querystring");
+const jwt = require("jsonwebtoken");
+const cookie = require("cookie");
+&nbsp;
+const verifyLogin = require("./queries/verifyLogin");
+const register = require("./queries/register");
+const getUserInfo = require("./queries/getUserInfo");
+const getUserId = require("./queries/getUserId");
+&nbsp;
+const key = "jaffa";
+&nbsp;
+const readFile = (response, filename) =&gt; {
+  fs.readFile(path.join(__dirname, "..", "public", filename), (err, file) =&gt; {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >      response.writeHead(500, { "Content-type": "text/html" });</span>
+<span class="cstat-no" title="statement not covered" >      response.end("&lt;h1&gt;Woops womething webt wrong&lt;/h1&gt;");</span>
+    } else {
+      response.writeHead(200, { "Content-type": "text/html" });
+      response.end(file);
+    }
+  });
+};
+&nbsp;
+const makeCookie = <span class="fstat-no" title="function not covered" >(l</span>oggedIn, userId) =&gt; {
+<span class="cstat-no" title="statement not covered" >  console.log("this is the Id in the cookie:", userId);</span>
+  const payload = <span class="cstat-no" title="statement not covered" >{</span>
+    logged_in: loggedIn,
+    user_id: userId
+  };
+  const options = <span class="cstat-no" title="statement not covered" >{ expiresIn: "30d" };</span>
+<span class="cstat-no" title="statement not covered" >  return jwt.sign(payload, key, options);</span>
+};
+&nbsp;
+const validateName = <span class="fstat-no" title="function not covered" >na</span>me =&gt; {
+  const lowerCaseName = <span class="cstat-no" title="statement not covered" >name.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >  return lowerCaseName.replace(/\s/g, "");</span>
+};
+&nbsp;
+const validatePwd = <span class="fstat-no" title="function not covered" >pw</span>d =&gt; {
+<span class="cstat-no" title="statement not covered" >  return pwd.trim();</span>
+};
+&nbsp;
+const homeRoute = (request, response) =&gt; {
+  readFile(response, "index.html");
+};
+&nbsp;
+const publicRoute = (request, response, url) =&gt; {
+  const ext = url.split(".")[1];
+  const fileExt = {
+    html: "text/html",
+    css: "text/css",
+    js: "application/javascript",
+    json: "application/json",
+    ttf: "application/octet-stream"
+  };
+&nbsp;
+  fs.readFile(path.join(__dirname, "..", url), (err, file) =&gt; {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >      response.writeHead(500, { "Content-type": "text/html" });</span>
+<span class="cstat-no" title="statement not covered" >      response.end("&lt;h1&gt;Woops womething webt wrong&lt;/h1&gt;");</span>
+    } else {
+      response.writeHead(200, `Content-type: ${fileExt[ext]}`);
+      response.end(file);
+    }
+  });
+};
+&nbsp;
+const registerRoute = (request, response, url) =&gt; {
+  readFile(response, "register.html");
+};
+&nbsp;
+const loginRoute = (request, response, url) =&gt; {
+  readFile(response, "index.html");
+};
+&nbsp;
+const welcomeRoute = (request, response, url) =&gt; {
+  readFile(response, "welcome.html");
+};
+&nbsp;
+const verifyLoginRoute = <span class="fstat-no" title="function not covered" >(r</span>equest, response, url) =&gt; {
+<span class="cstat-no" title="statement not covered" >  console.log("this is url", url);</span>
+  let data = <span class="cstat-no" title="statement not covered" >"";</span>
+<span class="cstat-no" title="statement not covered" >  request.on("data", <span class="fstat-no" title="function not covered" >ch</span>unk =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    data += chunk;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  request.on("end", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+    const username = <span class="cstat-no" title="statement not covered" >validateName(querystring.parse(data).username);</span>
+<span class="cstat-no" title="statement not covered" >    console.log("this is username:", username);</span>
+    const password = <span class="cstat-no" title="statement not covered" >validatePwd(querystring.parse(data).password);</span>
+<span class="cstat-no" title="statement not covered" >    console.log("this is password:", password);</span>
+<span class="cstat-no" title="statement not covered" >    if (username.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return "username is empty";</span>
+    } else <span class="cstat-no" title="statement not covered" >if (password.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return "password is empty";</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      if (data) {</span>
+<span class="cstat-no" title="statement not covered" >        verifyLogin(username, password, <span class="fstat-no" title="function not covered" >(e</span>rr, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            response.writeHead(500, { "content-type": "html/text" });</span>
+<span class="cstat-no" title="statement not covered" >            response.end("&lt;h1&gt;error updating the database&lt;/h1&gt;");</span>
+          } else <span class="cstat-no" title="statement not covered" >if (data) {</span>
+<span class="cstat-no" title="statement not covered" >            console.log("(handler) bang:", data);</span>
+<span class="cstat-no" title="statement not covered" >            getUserId(username, <span class="fstat-no" title="function not covered" >(e</span>rr, userId) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              if (err) <span class="cstat-no" title="statement not covered" >console.log(err);</span></span>
+<span class="cstat-no" title="statement not covered" >              if (data) {</span>
+                const token = <span class="cstat-no" title="statement not covered" >makeCookie(data, userId);</span>
+<span class="cstat-no" title="statement not covered" >                response.writeHead(302, {</span>
+                  location: "/welcome",
+                  "Set-Cookie": `status=${token}; HttpOnly`
+                });
+<span class="cstat-no" title="statement not covered" >                response.end();</span>
+              } else {
+<span class="cstat-no" title="statement not covered" >                response.writeHead(302, {</span>
+                  location: "/",
+                  "Set-Cookie": "status=0; Max-Age=0"
+                });
+<span class="cstat-no" title="statement not covered" >                response.end();</span>
+              }
+            });
+          }
+        });
+      }
+    }
+  });
+};
+&nbsp;
+const saveRegistryRoute = <span class="fstat-no" title="function not covered" >(r</span>equest, response, url) =&gt; {
+  let data = <span class="cstat-no" title="statement not covered" >"";</span>
+<span class="cstat-no" title="statement not covered" >  request.on("data", <span class="fstat-no" title="function not covered" >ch</span>unk =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    data += chunk;</span>
+  });
+<span class="cstat-no" title="statement not covered" >  request.on("end", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    console.log("(handler) this is data back from register:", data);</span>
+    const username = <span class="cstat-no" title="statement not covered" >validateName(querystring.parse(data).username);</span>
+<span class="cstat-no" title="statement not covered" >    console.log(username);</span>
+    const password = <span class="cstat-no" title="statement not covered" >validatePwd(querystring.parse(data).password);</span>
+    const colour = <span class="cstat-no" title="statement not covered" >querystring.parse(data).color;</span>
+<span class="cstat-no" title="statement not covered" >    if (data) {</span>
+<span class="cstat-no" title="statement not covered" >      register(username, password, colour, <span class="fstat-no" title="function not covered" >(e</span>rr, userId) =&gt; {</span>
+        // console.log("(handler) this is userId:", userId);
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >          response.writeHead(500, { "content-type": "html/text" });</span>
+<span class="cstat-no" title="statement not covered" >          response.end("&lt;h1&gt;Woops womething went wrong&lt;/h1&gt;");</span>
+        } else <span class="cstat-no" title="statement not covered" >if (userId) {</span>
+<span class="cstat-no" title="statement not covered" >          console.log("(handler) this is userid from register:", userId);</span>
+          const token = <span class="cstat-no" title="statement not covered" >makeCookie(true, userId.rows[0].id);</span>
+<span class="cstat-no" title="statement not covered" >          response.writeHead(302, {</span>
+            location: "/welcome",
+            "Set-Cookie": `status=${token}; HttpOnly`
+          });
+<span class="cstat-no" title="statement not covered" >          response.end();</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          response.writeHead(302, {</span>
+            location: "/",
+            "Set-Cookie": "status=0; Max-Age=0"
+          });
+<span class="cstat-no" title="statement not covered" >          response.end();</span>
+        }
+      });
+    }
+  });
+};
+&nbsp;
+const welcomeDataRoute = (request, response, url) =&gt; {
+  console.log(url);
+  // check if there is a cookie
+  console.log("(handler) this is the request:", request.headers.cookie);
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (request.headers.cookie &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >request.headers.cookie.includes("status"))</span> {
+    // use the module cookie to parse the information in the cookie
+    const cookies = <span class="cstat-no" title="statement not covered" >cookie.parse(request.headers.cookie);</span>
+<span class="cstat-no" title="statement not covered" >    console.log("(handler) this is cookie:", cookie);</span>
+    // use the module jsonwebtoken to verify the infomatin in the cookie
+<span class="cstat-no" title="statement not covered" >    jwt.verify(cookies.status, key, <span class="fstat-no" title="function not covered" >(e</span>rr, decoded) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("(handler) this is decoded:", decoded);</span>
+<span class="cstat-no" title="statement not covered" >      console.log("(handler) this is decoded.id:", decoded.user_id);</span>
+<span class="cstat-no" title="statement not covered" >      getUserInfo(decoded.user_id, <span class="fstat-no" title="function not covered" >(e</span>rr, userInfo) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (err) <span class="cstat-no" title="statement not covered" >console.log(err);</span></span>
+        // console.log("hi ", userInfo.rows[0].username);
+        // console.log("you like ", userInfo.rows[0].colour);
+        const returnObj = <span class="cstat-no" title="statement not covered" >{</span>
+          username: userInfo.rows[0].username,
+          colour: userInfo.rows[0].colour,
+          user_id: decoded.user_id,
+          logged_in: decoded.logged_in
+        };
+<span class="cstat-no" title="statement not covered" >        console.log("returnObj:", returnObj);</span>
+<span class="cstat-no" title="statement not covered" >        response.writeHead(200, { "content-type": "application/json" });</span>
+<span class="cstat-no" title="statement not covered" >        response.end(JSON.stringify(returnObj));</span>
+      });
+    });
+  } else {
+    response.writeHead(302, {
+      Location: "/",
+      "Set-Cookie": "logged_in=0; Max-Age=0"
+    });
+    response.end();
+  }
+};
+&nbsp;
+const logoutRoute = (request, response, url) =&gt; {
+  response.writeHead(302, {
+    location: "/",
+    "Set-Cookie": "status=0; Max-Age=0"
+  });
+  response.end();
+};
+&nbsp;
+module.exports = {
+  homeRoute,
+  publicRoute,
+  loginRoute,
+  verifyLoginRoute,
+  registerRoute,
+  saveRegistryRoute,
+  welcomeRoute,
+  welcomeDataRoute,
+  logoutRoute
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 15 2018 20:49:11 GMT+0100 (Central European Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
