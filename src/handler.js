@@ -80,7 +80,7 @@ const welcomeRoute = (request, response, url) => {
 };
 
 const verifyLoginRoute = (request, response, url) => {
-  console.log("this is url", url);
+  // console.log("this is url", url);
   let data = "";
   request.on("data", chunk => {
     data += chunk;
@@ -190,6 +190,7 @@ const welcomeDataRoute = (request, response, url) => {
         response.end(JSON.stringify(returnObj));
       });
     });
+    // check if no cookie
   } else {
     response.writeHead(302, {
       Location: "/",

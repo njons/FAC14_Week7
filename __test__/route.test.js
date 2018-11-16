@@ -91,13 +91,13 @@ describe("Test the routes, serving files", () => {
   });
 });
 
-describe("Test rerouting pages", () => {
-  test("user-data route: status code of 302 and reroutes to the welcome page", done => {
+describe("Test rerouting", () => {
+  test("user-data route (if no cookie): status code of 302 and reroutes to the home", done => {
     supertest(router)
       .get("/user-data")
       .then(response => {
-        console.log(response.headers.location);
         expect(response.statusCode).toBe(302);
+        expect(response.headers.location).toBe("/");
         done();
       });
   });
@@ -150,27 +150,3 @@ describe("Test rerouting pages", () => {
 //       });
 //   });
 // });
-
-// // PAGE: this is where we are serving the login files
-// homeRoute(request, response, url);
-// } else if (url.includes("/public")) {
-// publicRoute(request, response, url);
-// } else if (url.includes("/login")) {
-// // PAGE: this is where we are serving the login files
-// loginRoute(request, response, url);
-// } else if (url.includes("/verify-login")) {
-// verifyLoginRoute(request, response, url);
-// } else if (url.includes("/register")) {
-// // PAGE: this is where we are serving the register files
-// registerRoute(request, response, url);
-// } else if (url.includes("/save-registry")) {
-// saveRegistryRoute(request, response, url);
-// } else if (url.includes("/welcome")) {
-// // PAGE: this is where we are serving the welcome files
-// welcomeRoute(request, response, url);
-// } else if (url.includes("/user-data")) {
-// // ACTION: on welcome (grab colour from the)
-// welcomeDataRoute(request, response, url);
-// } else if (url.includes("/logout")) {
-// // ACTION: on logout (reroute to login and destroy cookie)
-// logoutRoute(request, response, url);

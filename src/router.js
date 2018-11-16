@@ -12,7 +12,7 @@ const {
 } = require("./handler");
 
 const router = (request, response) => {
-  console.log("this is the current url:", request.url);
+  // console.log("this is the current url:", request.url);
   const url = request.url;
 
   if (url === "/") {
