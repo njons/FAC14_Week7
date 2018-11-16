@@ -217,5 +217,6 @@ module.exports = {
   saveRegistryRoute,
   welcomeRoute,
   welcomeDataRoute,
-  logoutRoute
+  logoutRoute,
+  validateName
 };

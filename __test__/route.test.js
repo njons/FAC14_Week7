@@ -124,7 +124,6 @@ describe("Test rerouting", () => {
 });
 
 // verify login (gets stuck in validation function - because details are undefined?)
-
 // describe("Test the verify login route", () => {
 //   test("the /verify-login returns a status code of 200 ", done => {
 //     supertest(router)
@@ -138,7 +137,6 @@ describe("Test rerouting", () => {
 // });
 
 // save registry (gets stuck in validation function - because details are undefined?)
-
 // describe("Test saving the registry route", () => {
 //   test("the /save-registry returns a status code of 200 ", done => {
 //     supertest(router)
