@@ -1,4 +1,4 @@
-const { validateName } = require("../src/handler");
+const { validateName, validatePwd } = require("../src/handler");
 
 // test("Jest is working", () => {
 //   expect(1).toBe(1);

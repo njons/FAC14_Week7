@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1542392660632" clover="3.2.0">
-  <project timestamp="1542392660632" name="All files">
-    <metrics statements="212" coveredstatements="103" conditionals="70" coveredconditionals="24" methods="41" coveredmethods="14" elements="323" coveredelements="141" complexity="0" loc="212" ncloc="212" packages="5" files="9" classes="9">
+<coverage generated="1542392822671" clover="3.2.0">
+  <project timestamp="1542392822671" name="All files">
+    <metrics statements="212" coveredstatements="104" conditionals="70" coveredconditionals="24" methods="41" coveredmethods="15" elements="323" coveredelements="143" complexity="0" loc="212" ncloc="212" packages="5" files="9" classes="9">
       <package name="public.js">
         <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="dom.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/public/js/dom.js">
@@ -22,9 +22,9 @@
         </file>
       </package>
       <package name="src">
-        <metrics statements="139" coveredstatements="67" conditionals="48" coveredconditionals="19" methods="25" coveredmethods="12"/>
+        <metrics statements="139" coveredstatements="68" conditionals="48" coveredconditionals="19" methods="25" coveredmethods="13"/>
         <file name="handler.js" path="/Users/njons/Code/Learning/FAC/FAC14_Week7/FAC14_Week7/src/handler.js">
-          <metrics statements="115" coveredstatements="47" conditionals="30" coveredconditionals="4" methods="24" coveredmethods="11"/>
+          <metrics statements="115" coveredstatements="48" conditionals="30" coveredconditionals="4" methods="24" coveredmethods="12"/>
           <line num="1" count="2" type="stmt"/>
           <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
@@ -48,10 +48,10 @@
           <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="36" count="2" type="stmt"/>
-          <line num="37" count="7" type="stmt"/>
-          <line num="38" count="7" type="stmt"/>
+          <line num="37" count="10" type="stmt"/>
+          <line num="38" count="10" type="stmt"/>
           <line num="41" count="2" type="stmt"/>
-          <line num="42" count="0" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
           <line num="45" count="2" type="stmt"/>
           <line num="46" count="2" type="stmt"/>
           <line num="49" count="2" type="stmt"/>
