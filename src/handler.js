@@ -218,5 +218,6 @@ module.exports = {
   welcomeRoute,
   welcomeDataRoute,
   logoutRoute,
-  validateName
+  validateName,
+  validatePwd
 };

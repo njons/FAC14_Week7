@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1542392555962" clover="3.2.0">
-  <project timestamp="1542392555963" name="All files">
+<coverage generated="1542392660632" clover="3.2.0">
+  <project timestamp="1542392660632" name="All files">
     <metrics statements="212" coveredstatements="103" conditionals="70" coveredconditionals="24" methods="41" coveredmethods="14" elements="323" coveredelements="141" complexity="0" loc="212" ncloc="212" packages="5" files="9" classes="9">
       <package name="public.js">
         <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -48,8 +48,8 @@
           <line num="32" count="0" type="stmt"/>
           <line num="33" count="0" type="stmt"/>
           <line num="36" count="2" type="stmt"/>
-          <line num="37" count="4" type="stmt"/>
-          <line num="38" count="4" type="stmt"/>
+          <line num="37" count="7" type="stmt"/>
+          <line num="38" count="7" type="stmt"/>
           <line num="41" count="2" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
           <line num="45" count="2" type="stmt"/>
