@@ -1,7 +1,7 @@
 // what do we need to create a server
-const http = require("http");
+import http from "http";
 // what code do we need to access?
-const router = require("./router");
+import router from "./router.js";
 
 const server = http.createServer(router);
 const port = process.env.PORT || 3000;

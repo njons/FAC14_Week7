@@ -1,4 +1,5 @@
-const dbConnection = require("../db/db_connection");
+//const dbConnection = require("../db/db_connection");
+import dbConnection from "../db/db_connection.cjs";
 
 const getUserInfo = (id, cb) => {
   console.log("(getUserInfo) this is id:", id);
@@ -14,4 +15,5 @@ const getUserInfo = (id, cb) => {
   );
 };
 
-module.exports = getUserInfo;
+//module.exports = getUserInfo;
+export default getUserInfo;
