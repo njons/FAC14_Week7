@@ -1,46 +1,62 @@
-import { setToken, readToken } from "../utils/handleJwt.js";
+import { setToken } from "../utils/handleJwt.js";
 
-export const authRoute = (request, response, url) => {
+export const setCookieRoute = (request, response, url) => {
   let data = "";
   request.on("data", (chunk) => {
     data += chunk;
   });
   request.on("end", () => {
     data = JSON.parse(data);
-    console.log("data", data);
-    const { username, match, userId } = data;
+    const { match, userId } = data;
     // check for cookie
     const hasCookie = request.headers.cookie;
-    // if no cookie > set cookie jwt
-    // if cookie  > read cookie jwt
-    const handleCookie = async () => {
+    const setCookie = () => {
       let header = null;
       if (hasCookie === undefined) {
-        console.log("hasCookie", hasCookie);
-        const token = await setToken(match, userId);
-        console.log("token", token);
-        header = { "Set-Cookie": `status=${token}; HttpOnly` };
+        const token = setToken(match, userId);
+        header = {
+          Location: "http://localhost:3000/welcome",
+          Hello: "name",
+          "Set-Cookie": `status=${token}; HttpOnly`,
+        };
       } else {
-        header = { "content-type": "application/json" };
+        header = {
+          // Location: "http://localhost:3000/welcome",
+          Goodbye: "name",
+          "Content-Type": "application/json",
+        };
       }
-      return await Promise.resolve(header);
+      return Promise.resolve(header);
     };
 
-    handleCookie()
-      .then(async (headers) => {
-        const cookie = await readToken(hasCookie);
-        response.writeHead(200, headers);
-        response.end(
-          JSON.stringify({
-            status: "success",
-            message: "Alreday has cookie",
-            data: cookie,
-          })
-        );
+    // response.writeHead(302, {
+    //     Location: 'https://staging.dx.host.com' + req.url',
+    //     'Set-Cookie': 'fake-token=5b49adaaf7687fa'
+    // });
+
+    setCookie()
+      .then((header) => {
+        // const cookie = await readToken(hasCookie);
+        // response.writeHead(200, header);
+        response.writeHead(302, header);
+        response
+          .end
+          // JSON.stringify({
+          //   status: "success",
+          //   message:
+          //     hasCookie === undefined ? "New cookie set" : "Alreday has cookie",
+          // })
+          ();
       })
       .catch((err) => {
         console.error("error", err.constraint);
-        if (err) return err;
+        response.writeHead(500, { "content-type": "application/json" });
+        response.end(
+          JSON.stringify({
+            status: "fail",
+            message: `Something went wrong`,
+          })
+        );
       });
   });
 };

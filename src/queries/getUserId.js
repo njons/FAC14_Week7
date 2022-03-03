@@ -6,15 +6,17 @@ const getUserId = async (username, cb) => {
     text: `SELECT id FROM users WHERE username=$1;`,
     values: [username],
   };
-  dbConnection
+  return dbConnection
     .query(sql)
     .then((value) => {
       const user = value.rows[0];
-      cb(null, user.id);
+      return user;
+      // cb(null, user.id);
     })
     .catch((err) => {
       console.error("error", err.constraint);
-      if (err) return cb(err);
+      if (err) return err;
+      // if (err) return cb(err);
     });
 };
 

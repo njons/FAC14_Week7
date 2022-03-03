@@ -1,19 +1,18 @@
 const xhrRequest = (method, url, data, cb) => {
   // console.log("method:", method);
   // console.log("url:", url);
-  console.log("data:", data);
+  console.log("xhr req data:", data);
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      // console.log("xhr.responseText", xhr.responseText);
-      // console.log(typeof xhr.responseText);
-      // if (typeof xhr.responseText === "string") {
-      //   cb(null, xhr.responseText);
-      // } else {
+      console.log("xhr.responseText", xhr.responseText);
+      console.log(xhr.getResponseHeader("content-type"));
+      if (xhr.getResponseHeader("content-type") === "text/html") {
+        cb(null, xhr.responseText);
+      }
       const response = JSON.parse(xhr.responseText);
       // console.log("response", response);
       cb(null, response);
-      // }
     } else if (xhr.readyState === 4 && xhr.status !== 200) {
       cb("error" + xhr.responseType);
     }

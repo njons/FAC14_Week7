@@ -1,5 +1,4 @@
-import { setToken, readToken } from "../utils/handleJwt.js";
-
+// import { setToken, readToken } from "../utils/handleJwt.js";
 // import querystring from "querystring";
 import pwMatch from "../queries/pwMatch.js";
 import getUserId from "../queries/getUserId.js";
@@ -28,59 +27,52 @@ export const passwordCheckRoute = (request, response, url) => {
   request.on("data", (chunk) => {
     data += chunk;
   });
-  request.on("end", () => {
-    data = JSON.parse(data);
+  request.on("end", async () => {
+    data = await JSON.parse(data);
     const username = validateName(data.username);
     const password = validatePwd(data.password);
-    // check input passwords against db password
-    const dbResult = pwMatch(username, password).then(async (value) => value);
-    // .then(async (value) => {
-    //   console.log("value", value);
-    //   return value;
-    // });
-    // .catch((err) => {
-    //   console.error("error", err.constraint);
-    //   if (err) return cb(err);
-    // });
-    console.log("dbResult", dbResult);
-    // pwMatch(username, password, (err, dbResult) => {
-
-    //   console.log("dbResult", dbResult);
-    // if (err) {
-    //   response.writeHead(500, { "content-type": "application/json" });
-    //   response.end(
-    //     JSON.stringify({
-    //       status: "fail",
-    //       message: `Something went wrong`,
-    //     })
-    //   );
-    // } else {
-    //   if (!dbResult) {
-    //     // passwords don't match
-    //     response.writeHead(200, { "content-type": "application/json" });
-    //     response.end(
-    //       JSON.stringify({
-    //         status: "fail",
-    //         message: `username or password incorrect`,
-    //       })
-    //     );
-    //   } else {
-    //     // passwords match
-    //     response.writeHead(200, { "content-type": "application/json" });
-    //     response.end(
-    //       JSON.stringify({
-    //         status: "success",
-    //         message: "password is a match",
-    //         data: {
-    //           username: username,
-    //           match: dbResult.match,
-    //           // userId: dbResult.id,
-    //         },
-    //       })
-    //     );
-    //   }
-    // }
-    // });
+    // queries: ask for pw and user id
+    const passwordMatch = async () => {
+      const pwStatus = pwMatch(username, password);
+      const userId = getUserId(username);
+      return await Promise.all([pwStatus, userId]);
+    };
+    passwordMatch()
+      .then((dbResult) => {
+        if (!dbResult[0]) {
+          // passwords don't match
+          response.writeHead(200, { "content-type": "application/json" });
+          response.end(
+            JSON.stringify({
+              status: "fail",
+              message: `username or password incorrect`,
+            })
+          );
+        } else {
+          // passwords match
+          response.writeHead(200, { "content-type": "application/json" });
+          response.end(
+            JSON.stringify({
+              status: "success",
+              message: "password is a match",
+              // data: {
+              //   username: username,
+              //   match: true,
+              //   userId: dbResult[1].id,
+              // },
+            })
+          );
+        }
+      })
+      .catch((error) => {
+        response.writeHead(500, { "content-type": "application/json" });
+        response.end(
+          JSON.stringify({
+            status: "fail",
+            message: `Something went wrong`,
+          })
+        );
+      });
   });
 };
 

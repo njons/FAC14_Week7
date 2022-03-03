@@ -38,6 +38,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
+  if (url === "/welcome") {
+    // identify the submit button
+    import("./newUser.mjs")
+      .then((module) => module.default(dataToSend))
+      .catch((error) => {});
+    // getWelcomeData("/user-data");
+    // const registerButton = document.querySelector("#submit");
+    // registerButton.addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   let username = usernameInput.value.toLowerCase().trim();
+    //   let password = passwordInput.value.replace(/\s/g, "").trim();
+    //   let color = document.querySelector("#color").value;
+    //   const dataToSend = { username, password, color };
+    //   if (username && password && color) {
+    //     import("./newUser.mjs")
+    //       .then((module) => module.default(dataToSend))
+    //       .catch((error) => {});
+    //   }
+    // });
+  }
+
   //getWelcomeData("/user-data");
 });
 

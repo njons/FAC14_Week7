@@ -2,9 +2,9 @@
 import { homeRoute, publicRoute } from "./routes/index.js";
 import { loginRoute } from "./routes/login.js";
 import { passwordCheckRoute } from "./routes/password-check.js";
-import { authRoute } from "./routes/auth.js";
 import { registerRoute } from "./routes/register.js";
 import { newUserRoute } from "./routes/new-user.js";
+import { loginUserRoute } from "./routes/redirectRoute.js";
 import {
   welcomeRoute,
   welcomeDataRoute,
@@ -23,8 +23,8 @@ const router = (request, response) => {
     loginRoute(request, response, url);
   } else if (url.includes("/password")) {
     passwordCheckRoute(request, response, url);
-  } else if (url.includes("/auth")) {
-    authRoute(request, response, url);
+  } else if (url.includes("/redirect")) {
+    loginUserRoute(request, response);
   } else if (url.includes("/register")) {
     // PAGE: register
     registerRoute(request, response, url);
