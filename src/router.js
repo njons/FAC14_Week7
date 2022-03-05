@@ -1,47 +1,46 @@
 // what code do we need to access?
-const {
-  homeRoute,
-  publicRoute,
-  loginRoute,
-  verifyLoginRoute,
-  registerRoute,
-  saveRegistryRoute,
+import { homeRoute, publicRoute } from "./routes/index.js";
+import { loginRoute } from "./routes/login.js";
+import { passwordCheckRoute } from "./routes/password-check.js";
+import { registerRoute } from "./routes/register.js";
+import { newUserRoute } from "./routes/new-user.js";
+import { redirectRoute } from "./routes/redirectRoute.js";
+import {
   welcomeRoute,
   welcomeDataRoute,
-  logoutRoute
-} = require("./handler");
+  logoutRoute,
+} from "./routes/welcome.js";
 
 const router = (request, response) => {
-  // console.log("this is the current url:", request.url);
   const url = request.url;
-
   if (url === "/") {
-    // PAGE: this is where we are serving the login files
+    // PAGE: home
     homeRoute(request, response, url);
   } else if (url.includes("/public")) {
     publicRoute(request, response, url);
   } else if (url.includes("/login")) {
-    // PAGE: this is where we are serving the login files
+    // PAGE: login
     loginRoute(request, response, url);
-  } else if (url.includes("/verify-login")) {
-    verifyLoginRoute(request, response, url);
+  } else if (url.includes("/password")) {
+    passwordCheckRoute(request, response, url);
+  } else if (url.includes("/redirect")) {
+    redirectRoute(request, response);
   } else if (url.includes("/register")) {
-    // PAGE: this is where we are serving the register files
+    // PAGE: register
     registerRoute(request, response, url);
-  } else if (url.includes("/save-registry")) {
-    saveRegistryRoute(request, response, url);
+  } else if (url.includes("/new-user")) {
+    newUserRoute(request, response);
   } else if (url.includes("/welcome")) {
-    // PAGE: this is where we are serving the welcome files
+    // PAGE: welcome
     welcomeRoute(request, response, url);
   } else if (url.includes("/user-data")) {
-    // ACTION: on welcome (grab colour from the)
     welcomeDataRoute(request, response, url);
   } else if (url.includes("/logout")) {
-    // ACTION: on logout (reroute to login and destroy cookie)
     logoutRoute(request, response, url);
   } else {
     response.writeHead(404, "Content-Type: text/html");
     response.end("<h1>404 not found</h1>");
   }
 };
-module.exports = router;
+
+export default router;

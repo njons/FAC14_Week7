@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Free Web tutorials">
-  <meta name="author" content="John Doe">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="public/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="public/css/style.css">
-  <link rel="stylesheet" type="text/css" href="public/css/fonts.css">
-  <title>login.</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Free Web tutorials" />
+    <meta name="author" content="John Doe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="public/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/fonts.css" />
+    <title>login.</title>
+  </head>
 
-<body>
-  <section>
-    <h1>log in.</h1>
-    <form action="/verify-login" method="post">
-      <label for="username">username</label>
-      <input type="text" name="username" id="username" value="njons" autocomplete="off" autofocus>
-      <label for="password">password</label>
-      <input type="text" name="password" id="password" value="password" autocomplete="off">
-      <button type="submit" id="submit">sign in</button>
-    </form>
-  </section>
+  <body>
+    <section>
+      <h1>log in.</h1>
+      <form method="post">
+        <label for="username">username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value=""
+          autocomplete="off"
+          autofocus
+          required
+        />
+        <label for="password">password</label>
+        <input
+          type="text"
+          name="password"
+          id="password"
+          value=""
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="submit">sign in</button>
+      </form>
+    </section>
 
-  <footer>
-    <h2>don't have a login?</h2>
-    <a href="/register"><button type="submit" id="register">register here</button></a>
-  </footer>
-  <script src="public/js/dom_inputs.js"></script>
-</body>
+    <footer>
+      <h2>don't have a login?</h2>
+      <a href="/register"
+        ><button type="submit" id="register">register here</button></a
+      >
+    </footer>
+    <script type="module" src="public/js/dom.mjs"></script>
+  </body>
 </html>

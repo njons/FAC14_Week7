@@ -1,17 +1,21 @@
-const dbConnection = require("../db/db_connection");
+import dbConnection from "../db/db_connection.cjs";
 
-const getUserId = (username, cb) => {
-  console.log("(getUserInfo) this is username:", username);
-  // get the username and colour
-  dbConnection.query(
-    `SELECT id FROM users WHERE username=$1`,
-    [username],
-    (err, dbResults) => {
-      if (err) return cb(err);
-      cb(null, dbResults.rows[0].id);
-      console.log("(getUserInfo) this is db Results:", dbResults);
-    }
-  );
+const getUserId = async (username, cb) => {
+  const sql = {
+    text: `SELECT id FROM users WHERE username=$1;`,
+    values: [username],
+  };
+  return dbConnection
+    .query(sql)
+    .then((value) => {
+      const user = value.rows[0];
+      return user;
+    })
+    .catch((err) => {
+      console.error("error", err.constraint);
+      console.error("error", err);
+      return err;
+    });
 };
 
-module.exports = getUserId;
+export default getUserId;
