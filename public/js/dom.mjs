@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const loginButton = document.querySelector("#submit");
     loginButton.addEventListener("click", (event) => {
       event.preventDefault();
+      loginButton.disabled = true;
       let username = usernameInput.value.toLowerCase().trim();
       let password = passwordInput.value.replace(/\s/g, "").trim();
       const dataToSend = { username, password };
       if (username !== "" && password !== "") {
+        loginButton.disabled = false;
         import("./login.mjs")
           .then((module) => module.default(dataToSend))
           .catch((error) => {});
@@ -26,6 +28,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const registerButton = document.querySelector("#submit");
     registerButton.addEventListener("click", (event) => {
       event.preventDefault();
+      registerButton.disabled = true;
       let username = usernameInput.value.toLowerCase().trim();
       let password = passwordInput.value.replace(/\s/g, "").trim();
       let color = document.querySelector("#color").value;
@@ -39,9 +42,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   if (url === "/welcome") {
+    // console.log("url!", url);
     // identify the submit button
-    import("./newUser.mjs")
-      .then((module) => module.default(dataToSend))
+    import("./welcome.mjs")
+      .then((module) => module.default())
       .catch((error) => {});
     // getWelcomeData("/user-data");
     // const registerButton = document.querySelector("#submit");

@@ -7,12 +7,10 @@ const xhrRequest = (method, url, data, cb) => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       console.log("xhr.responseText", xhr.responseText);
       console.log(xhr.getResponseHeader("content-type"));
-      if (xhr.getResponseHeader("content-type") === "text/html") {
-        cb(null, xhr.responseText);
+      if (xhr.getResponseHeader("content-type") === "application/json") {
+        cb(null, JSON.parse(xhr.responseText));
       }
-      const response = JSON.parse(xhr.responseText);
-      // console.log("response", response);
-      cb(null, response);
+      cb(null, xhr.responseText);
     } else if (xhr.readyState === 4 && xhr.status !== 200) {
       cb("error" + xhr.responseType);
     }

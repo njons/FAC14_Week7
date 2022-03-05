@@ -4,7 +4,7 @@ import { loginRoute } from "./routes/login.js";
 import { passwordCheckRoute } from "./routes/password-check.js";
 import { registerRoute } from "./routes/register.js";
 import { newUserRoute } from "./routes/new-user.js";
-import { loginUserRoute } from "./routes/redirectRoute.js";
+import { redirectRoute } from "./routes/redirectRoute.js";
 import {
   welcomeRoute,
   welcomeDataRoute,
@@ -24,7 +24,7 @@ const router = (request, response) => {
   } else if (url.includes("/password")) {
     passwordCheckRoute(request, response, url);
   } else if (url.includes("/redirect")) {
-    loginUserRoute(request, response);
+    redirectRoute(request, response);
   } else if (url.includes("/register")) {
     // PAGE: register
     registerRoute(request, response, url);

@@ -6,20 +6,15 @@ const checkPassword = (userData) => {
     console.log("data from endpoint /password-check:", data);
     if (err) new Error();
     if (data.status === "success") {
-      redirect();
-    } else if (data.status === "fail") {
-      // IU feedback on error
-      // no cookie
-    }
-  });
-};
-
-const redirect = (data) => {
-  fetch("/redirect").then((response) => {
-    console.log(response);
-    if (response) {
-      
-      window.location.href = response.url;
+      fetch("/redirect")
+        .then((response) => {
+          if (response.url) {
+            window.location.replace(response.url);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
   });
 };

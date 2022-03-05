@@ -1,4 +1,4 @@
-// import { setToken, readToken } from "../utils/handleJwt.js";
+import { setToken } from "../utils/handleJwt.js";
 // import querystring from "querystring";
 import pwMatch from "../queries/pwMatch.js";
 import getUserId from "../queries/getUserId.js";
@@ -39,7 +39,9 @@ export const passwordCheckRoute = (request, response, url) => {
     };
     passwordMatch()
       .then((dbResult) => {
-        if (!dbResult[0]) {
+        const [match, userId] = dbResult;
+        console.log(match, userId);
+        if (!match) {
           // passwords don't match
           response.writeHead(200, { "content-type": "application/json" });
           response.end(
@@ -50,16 +52,21 @@ export const passwordCheckRoute = (request, response, url) => {
           );
         } else {
           // passwords match
-          response.writeHead(200, { "content-type": "application/json" });
+          const token = setToken(match, userId);
+          console.log(token);
+          response.writeHead(200, {
+            "content-type": "application/json",
+            "Set-Cookie": `status=${token}; HttpOnly`,
+          });
           response.end(
             JSON.stringify({
               status: "success",
               message: "password is a match",
-              // data: {
-              //   username: username,
-              //   match: true,
-              //   userId: dbResult[1].id,
-              // },
+              data: {
+                username: username,
+                // match: match,
+                userId: userId, //dbResult[1].id,
+              },
             })
           );
         }
@@ -70,6 +77,7 @@ export const passwordCheckRoute = (request, response, url) => {
           JSON.stringify({
             status: "fail",
             message: `Something went wrong`,
+            error: error,
           })
         );
       });

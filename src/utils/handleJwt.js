@@ -11,8 +11,8 @@ export const setToken = (loggedIn, userId) => {
   return jwt.sign(payload, key, options);
 };
 
-export const readToken = (hasCookie) => {
-  const token = hasCookie.split("=")[1];
+export const readToken = (token) => {
+  // const token = hasCookie.split("=")[1];
   return jwt.verify(token, key);
 };
 
